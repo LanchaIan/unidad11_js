@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventanas menu</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <div id="ingredientes" class="ingredientes">
+    </div>
+    <p>txto</p>
+    <form action="" id="formulario">
+        <label for="">Peperonni</label>
+        <input type="checkbox" id="ingrediente1" value="peperonni">
+        <br>
+        <label for="">Jamón</label>
+        <input type="checkbox" id="ingrediente2" value="jamón">
+        <br>
+        <label for="">Piña</label>
+        <input type="checkbox" id="ingrediente3" value="Piña">
+    </form>
+    <button onclick="crear('prueba')">Crear</button>
+    <button onclick="validacion()">Pedir pizza</button>
+    <div id="div1"></div>
+    <script>
+        function crear(ingrediente){
+            let para = document.createElement("p");
+            let node = document.createTextNode(ingrediente);
+            para.appendChild(node);
+            const element = document.getElementById("div1");
+            element.appendChild(para);
+        }
+        function validacion(){   
+        formulario = document.all;
+        ingredientes = new Array();
+        for(var i = 1; i < formulario.length - 1 ; i++) { 
+            if (formulario[i].tagName == "INPUT"){
+                if (formulario[i].checked){
+                    ingrediente = formulario[i].value;
+                    ingredientes.push(ingrediente);
+                }
+                
+            }
+        }
+        if (ingredientes.length === 0){
+            alert("está vacio")
+        }
+        else{
+            crear("Ingredientes:");
+            for(let i=0;i<ingredientes.length;i++){
+                crear(ingredientes[i]);
+            }
+        }
+    }
+    </script>
+</body>
+</html>
